@@ -67,7 +67,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     role: "Marketing & Web Designer",
     metaTitle: "Zeynep Uhlir — Marketing & Web Designer",
     metaDescription:
-      "Zeynep Uhlir — marketing and web design. Social media management, content creation and website design for Vinařství Kosík and Penzion u Kosíků in Tvrdonice, Czech Republic.",
+      "Zeynep Uhlir — marketing & web design. Social media management, content creation and website design for Vinařství Kosík and Penzion u Kosíků in Tvrdonice.",
     ogAlt: "Zeynep Uhlir — Marketing & Web Designer",
     projectsLabel: "Projects",
     projectAlt: {
