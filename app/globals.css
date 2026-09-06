@@ -15,7 +15,3 @@ body {
   background: oklch(0.97 0.01 60);
   color: oklch(0.3 0.01 60);
 }
-
-a {
-  color: oklch(0.5 0.16 35);
-}
