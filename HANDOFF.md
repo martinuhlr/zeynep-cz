@@ -14,44 +14,55 @@ prohlížeče, s ručním přepínačem CZ/EN. Postavené v Next.js, hostované 
 
 | Co | Kde | Poznámka |
 |---|---|---|
-| Kód | [github.com/martinuhlr/zeynep-cz](https://github.com/martinuhlr/zeynep-cz) | soukromý repo pod Martinovým GitHub účtem |
-| Hosting/deploy | Vercel, projekt `zeynep-cz` | pod Martinovým osobním Vercel účtem, napojený na GitHub (push do `main` = automatický deploy) |
+| Kód | [github.com/martinuhlr/zeynep-cz](https://github.com/martinuhlr/zeynep-cz) | veřejný repo pod Martinovým GitHub účtem, Zeynep je collaborator |
+| Hosting/deploy | Vercel, projekt `zeynep-cz` | v Martinově Vercel týmu OnTarget, napojený na GitHub (push do `main` = automatický deploy) |
 | Doména | `zeynep.cz` | registrovaná u WEDOS na Martinovo jméno, DNS ukazuje na Vercel |
 | E-mail `ahoj@zeynep.cz` | WEDOS mail (Seznam Email Profi) | funguje nezávisle na webu, nic jsme na tom neměnili |
 | Obsah stránky | `lib/i18n.ts` v repu | jméno, texty, kontakty, popisy projektů — vše na jednom místě, česky i anglicky vedle sebe |
 
 ## Co potřebuje Zeynep, aby mohla web sama spravovat
 
-Tohle musí odsouhlasit/udělat Martin (nejde to udělat z tohoto sezení automaticky):
+Zeynep nasazuje web **pushem do větve `main` na GitHubu**. Vercel účet k tomu nepotřebuje:
+repo je veřejné a Vercel nasadí každý commit, který se v `main` objeví.
 
-1. **GitHub** — buď přidat Zeynep jako collaboratora do `martinuhlr/zeynep-cz` (Settings →
-   Collaborators), nebo repo převést na její vlastní GitHub účet (Settings → Transfer
-   ownership). Collaborator je jednodušší a nemění vlastnictví.
-2. **Vercel** — přidat Zeynep jako člena projektu (Project Settings → Members), nebo časem
-   projekt přesunout do jejího vlastního Vercel týmu. Bez toho nemůže sama dělat manuální
-   deploy ani vidět logy/analytics — ale auto-deploy z GitHubu jí půjde, jakmile bude mít
-   push přístup do repa.
-3. **Doména/DNS** — `zeynep.cz` zůstává registrovaná u WEDOS na Martina. Pokud bude Zeynep
-   chtít sama měnit DNS (např. přidat e-mailovou službu, subdoménu apod.), potřebuje buď
-   přístup do Martinova WEDOS účtu, nebo časem převod domény na její vlastní WEDOS účet.
-   Než k tomu dojde, DNS změny bude muset dělat Martin na její žádost.
-4. **Žádné hesla/klíče se nikam nekopírují** — web nepoužívá žádné API klíče ani proměnné
-   prostředí, takže tady není co předávat.
+1. **GitHub** — Zeynep je collaborator v `martinuhlr/zeynep-cz`. Pozvánku od Martina musí
+   jednou přijmout (přijde e-mailem, nebo na [github.com/notifications](https://github.com/notifications)).
+2. **Vercel** — přístup nemá a nepotřebuje. Projekt zůstává v Martinově týmu. Build logy,
+   nastavení projektu a rollback z dashboardu proto vidí a dělá jen Martin.
+3. **Doména/DNS** — `zeynep.cz` zůstává registrovaná u WEDOS na Martina. DNS změny (e-mailová
+   služba, subdoména apod.) dělá Martin na její žádost.
+4. **Žádná hesla ani klíče** — web nepoužívá API klíče ani proměnné prostředí, není co předávat.
 
-## Jak to funguje pro každodenní úpravy
+## První spuštění u Zeynep (jednou)
 
-Až bude mít přístup do GitHubu, stačí:
+1. Nainstalovat [Node.js](https://nodejs.org) (LTS), [GitHub CLI](https://cli.github.com)
+   a [Claude Code](https://claude.com/claude-code).
+2. Přijmout pozvánku do repa na GitHubu.
+3. V terminálu:
 
 ```bash
-git clone https://github.com/martinuhlr/zeynep-cz.git
+gh auth login                      # přihlášení ke GitHubu, stačí odklikat v prohlížeči
+gh repo clone martinuhlr/zeynep-cz
 cd zeynep-cz
 npm install
-npm run dev
+claude                             # spustí Claude Code v této složce
 ```
 
-Otevře se lokální verze na `http://localhost:3000`. Editace textů/kontaktů/projektů je
-v jednom souboru — `lib/i18n.ts` (popsáno detailně v `CLAUDE.md`). Po commitu a pushi do
-`main` se web sám nasadí na `zeynep.cz` během chvilky (žádný ruční krok navíc).
+## Nasazení nového designu z Claude Design
+
+1. V Claude Design návrh exportovat jako handoff pro Claude Code (stáhne se složka
+   s `README.md` a podsložkou `project/`) a tu přesunout do `zeynep-cz/_handoff/`.
+2. V Claude Code (spuštěném ve složce `zeynep-cz`) napsat třeba:
+   *„V `_handoff/` je nový design z Claude Design. Předělej podle něj web a nasaď ho."*
+3. Claude si sám načte skill `deploying-zeynep-cz` (je součástí repa), design přenese do webu,
+   ukáže ho lokálně na `http://localhost:3000` a zeptá se, jestli ho má zveřejnit.
+4. Po potvrzení ho pushne do `main` a ověří, že nová verze na `https://zeynep.cz` opravdu běží.
+
+Drobné úpravy textů, kontaktů a projektů fungují stejně: říct Claudovi, co změnit. Všechen
+obsah je v jednom souboru `lib/i18n.ts` (detailně v `CLAUDE.md`).
+
+**Pozor:** `main` je rovnou produkce, žádná zkušební verze mezi tím není. Co se pushne, je
+do minuty na webu. Když se něco pokazí, Claude umí poslední změnu vrátit (`git revert`).
 
 ## Stav ke dni předání
 

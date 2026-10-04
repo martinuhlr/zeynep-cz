@@ -72,8 +72,9 @@ npm run build     # do this before every deploy — catches most issues
 
 ## Deployment
 
-- **Git**: push to `main` on GitHub → Vercel auto-deploys to production (project is Git-linked).
-- **Manual deploy**: `vercel --prod` from this directory (needs `vercel login` first if not already authenticated).
+- **Git**: push to `main` on GitHub → Vercel auto-deploys to production (project is Git-linked). This is the only deploy path for Zeynep — follow the `deploying-zeynep-cz` skill (`.claude/skills/`).
+- **Access**: the Vercel project lives in Martin's `ontarget` team (Pro). Zeynep is a GitHub collaborator only, with no Vercel seat; the repo is public so her commits deploy without one.
+- **Manual deploy** (Martin only): `vercel --prod` from this directory.
 - **Domain**: `zeynep.cz` (apex) is canonical; `www.zeynep.cz` 308-redirects to it automatically (Vercel-managed). DNS is at WEDOS — apex `A` record → `216.198.79.1`, `www` is a Vercel-managed `CNAME`. Email (MX) for `ahoj@zeynep.cz` is separate and untouched by any of this.
 - There are no environment variables to configure — the build reads nothing from `process.env`.
 

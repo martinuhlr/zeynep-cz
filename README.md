@@ -29,4 +29,4 @@ npm run dev
 
 ## Deployment
 
-Deployed on Vercel from the `main` branch. Run the `predeploy-check` skill before any production deploy.
+Deployed on Vercel from the `main` branch. Deploy steps are in the `deploying-zeynep-cz` skill (`.claude/skills/`).
