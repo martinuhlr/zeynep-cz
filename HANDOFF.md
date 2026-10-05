@@ -6,8 +6,8 @@ vedle tohohle souboru — Claude Code si ho při práci v tomhle repu načte aut
 
 ## Co web je
 
-Jednostránková vizitka/portfolio — jméno, kontakty (LinkedIn, telefon, e-mail) a dva
-odkazované projekty (Vinařství Kosík, Penzion u Kosíků). Česky/anglicky podle jazyka
+Jednostránkové portfolio — úvod, tři projekty (Ostratický, Vinařství Kosík, Penzion u Kosíků),
+služby, o mně a kontakty (LinkedIn, telefon, e-mail). Česky/anglicky podle jazyka
 prohlížeče, s ručním přepínačem CZ/EN. Postavené v Next.js, hostované na Vercelu.
 
 ## Kde to všechno je
@@ -18,7 +18,7 @@ prohlížeče, s ručním přepínačem CZ/EN. Postavené v Next.js, hostované 
 | Hosting/deploy | Vercel, projekt `zeynep-cz` | v Martinově Vercel týmu OnTarget, napojený na GitHub (push do `main` = automatický deploy) |
 | Doména | `zeynep.cz` | registrovaná u WEDOS na Martinovo jméno, DNS ukazuje na Vercel |
 | E-mail `ahoj@zeynep.cz` | WEDOS mail (Seznam Email Profi) | funguje nezávisle na webu, nic jsme na tom neměnili |
-| Obsah stránky | `lib/i18n.ts` v repu | jméno, texty, kontakty, popisy projektů — vše na jednom místě, česky i anglicky vedle sebe |
+| Obsah stránky | `lib/i18n.ts` v repu | jméno, texty, kontakty, projekty, služby, životopis — vše na jednom místě, česky i anglicky vedle sebe |
 
 ## Co potřebuje Zeynep, aby mohla web sama spravovat
 

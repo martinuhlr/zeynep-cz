@@ -23,28 +23,28 @@ Portfolio/vizitka site for Zeynep Uhlir (Marketing & Web Designer). One page, tw
 app/
   [locale]/
     layout.tsx          # <html>/<body>, fonts, per-locale <head> metadata, JSON-LD
-    page.tsx             # the whole page (hero card + projects grid)
+    page.tsx             # the whole page (nav, hero, projects, services, about, contact)
     opengraph-image.tsx  # generated OG image per locale
   icon.tsx, apple-icon.tsx  # generated favicon / apple touch icon
   robots.ts, sitemap.ts
-  globals.css
+  globals.css            # design tokens (CSS variables) + all page styles
 proxy.ts                 # redirects "/" -> "/cs" or "/en" by Accept-Language, sets a cookie
 lib/i18n.ts               # ALL text content + contact info + project data lives here
-components/LangSwitch.tsx # the CZ/EN pills in the top-right corner
-components/Sparkle.tsx    # the little 4-point star decoration
-public/images/            # project thumbnails (webp)
+components/Nav.tsx        # fixed top nav (turns opaque on scroll)
+components/LangSwitch.tsx # the "CS / EN" pill inside the nav
+public/images/            # all images (webp) + the Kosík reel video (mp4); reels/ and social/ subfolders
 ```
 
 **There is no CMS.** To change any text, contact info, or project data, edit `lib/i18n.ts` — it's the single source of truth, with a `cs` and `en` object side by side.
 
 ## Editing content
 
-- **Name / hero text**: `contact` object in `lib/i18n.ts`.
+- **Name**: `contact` object in `lib/i18n.ts`. **Hero / section text**: `hero`, `work`, `services`, `about`, `contactSection` in each dictionary.
 - **Contact pills** (LinkedIn/phone/email): also `contact` in `lib/i18n.ts`. Phone/email format matters — `phoneHref` needs a `tel:` link with no spaces, `phoneDisplay` is what's shown.
-- **Project cards**: `projects` array in `lib/i18n.ts` (name, external link, image path) + `projectDesc`/`projectAlt` per locale in the `dictionaries` object.
-- **Project images**: drop a new file in `public/images/`, reference it from the `projects` array. Keep them as `.webp`, landscape-ish (they're shown at a fixed 160px height with `object-fit: cover`, so exact aspect ratio doesn't matter much).
-- **Adding a project**: add an entry to `projects` in `lib/i18n.ts`, plus a matching `projectDesc`/`projectAlt` entry for both `cs` and `en` — TypeScript will tell you if you miss one (the dictionary type is derived from the `projects` list).
-- **Colors/fonts**: the palette is inline Tailwind arbitrary values (`bg-[oklch(0.5_0.16_35)]` etc.) directly in `app/[locale]/page.tsx` — there's no separate design-token file. Caveat (headline) and Poppins (body) are loaded via `next/font/google` in `app/[locale]/layout.tsx`.
+- **Projects**: `projects` array in `lib/i18n.ts` (name, link, domain, screenshot) + `work.projects[id]` per locale (type, description, the four meta pairs, screenshot alt). The Kosík reels/social grid images are in `kosikMedia`, the hero thumbnail pile in `heroPile`.
+- **Images**: drop a new `.webp` in `public/images/` and reference it from `lib/i18n.ts` with its real `width`/`height` (needed by `next/image`). Website screenshots are tall full-page captures — the browser frame scrolls through them on hover (and automatically on touch screens).
+- **Adding a project**: add an entry to `projects` in `lib/i18n.ts`, plus a matching `work.projects` entry for both `cs` and `en` — TypeScript will tell you if you miss one (the dictionary type is derived from the `projects` list).
+- **Colors/fonts**: the palette is CSS variables at the top of `app/globals.css` (`--bg`, `--accent` lavender, `--butter` yellow, …); the page uses plain class names styled in the same file (ported 1:1 from the design's stylesheet). Bricolage Grotesque (headlines) and DM Sans (body) are loaded via `next/font/google` in `app/[locale]/layout.tsx`. The OG image and icons hard-code the same colors as hex.
 
 ## i18n / language detection
 

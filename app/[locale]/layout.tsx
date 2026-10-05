@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Caveat, Poppins } from "next/font/google";
+import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 import {
   contact,
@@ -10,17 +10,18 @@ import {
 } from "@/lib/i18n";
 import "../globals.css";
 
-const caveat = Caveat({
+// Variable fonts (no `weight`) so the optical-size axis can be included.
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin", "latin-ext"],
-  weight: ["600", "700"],
-  variable: "--font-caveat",
+  axes: ["opsz"],
+  variable: "--font-bricolage",
   display: "swap",
 });
 
-const poppins = Poppins({
+const dmSans = DM_Sans({
   subsets: ["latin", "latin-ext"],
-  weight: ["500", "600"],
-  variable: "--font-poppins",
+  axes: ["opsz"],
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -92,11 +93,11 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={dict.htmlLang} className={`${caveat.variable} ${poppins.variable}`}>
-      <body className="font-poppins">
+    <html lang={dict.htmlLang} className={`${bricolage.variable} ${dmSans.variable}`}>
+      <body>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:shadow"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:rounded-md focus:bg-[#ffd98a] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[#16131c] focus:shadow"
         >
           {dict.skipToContent}
         </a>
