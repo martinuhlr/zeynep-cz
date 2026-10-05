@@ -20,46 +20,25 @@ export default async function OpengraphImage({
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 28,
-          background: "#faf4ef",
+          justifyContent: "space-between",
+          padding: "72px 88px",
+          background: "#16131c",
+          color: "#f1ecf7",
           fontFamily: "Helvetica, Arial, sans-serif",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: 24,
-            width: 1040,
-            padding: "64px 80px",
-            borderRadius: 32,
-            border: "3px solid #c55c43",
-            background: "#faf2e9",
-          }}
-        >
-          <div
-            style={{
-              fontSize: 108,
-              fontWeight: 700,
-              fontStyle: "italic",
-              fontFamily: "Georgia, serif",
-              color: "#ab3415",
-            }}
-          >
+        <div style={{ display: "flex", fontSize: 40, fontWeight: 800 }}>
+          zeynep<span style={{ color: "#c6b3ff" }}>.</span>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <div style={{ display: "flex", fontSize: 120, fontWeight: 800, letterSpacing: -4, lineHeight: 1 }}>
             {contact.name}
           </div>
-          <div
-            style={{
-              fontSize: 32,
-              fontWeight: 600,
-              color: "#433830",
-            }}
-          >
-            {dict.role}
-          </div>
+          <div style={{ display: "flex", fontSize: 40, color: "#a99fba" }}>{dict.role}</div>
+        </div>
+        <div style={{ display: "flex", gap: 16 }}>
+          <div style={{ display: "flex", width: 120, height: 14, borderRadius: 99, background: "#c6b3ff" }} />
+          <div style={{ display: "flex", width: 60, height: 14, borderRadius: 99, background: "#ffd98a" }} />
         </div>
       </div>
     ),
