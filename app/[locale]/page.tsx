@@ -174,6 +174,8 @@ export default async function Home({
                             height={project.screenshot.height}
                             alt={text.screenshotAlt ?? ""}
                             sizes="(max-width: 1000px) 100vw, 760px"
+                            quality={90}
+                            loading="lazy"
                           />
                           <div className="screen-hint" aria-hidden="true">
                             {work.hoverHint}
