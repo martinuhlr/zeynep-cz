@@ -22,7 +22,7 @@ export const heroPile: (Img & { rotate: string; y: string })[] = [
   { src: "/images/reels/most-reel.webp", width: 506, height: 900, position: "center 20%", rotate: "-9deg", y: "18px" },
   { src: "/images/ostraticky-home.webp", width: 733, height: 2000, position: "top", rotate: "-4deg", y: "-6px" },
   { src: "/images/social/post-black-friday.webp", width: 576, height: 720, rotate: "3deg", y: "10px" },
-  { src: "/images/penzion-site.webp", width: 800, height: 1294, position: "top", rotate: "-2deg", y: "-14px" },
+  { src: "/images/penzion-site.webp", width: 1236, height: 2000, position: "top", rotate: "-2deg", y: "-14px" },
   { src: "/images/social/post-valentyn-brand-hearts.webp", width: 576, height: 720, rotate: "6deg", y: "6px" },
   { src: "/images/reels/frizante-rose.webp", width: 720, height: 900, rotate: "10deg", y: "22px" },
 ];
@@ -76,7 +76,7 @@ export const projects = [
     name: "Penzion u Kosíků",
     href: "https://ukosiku.cz/",
     domain: "ukosiku.cz",
-    screenshot: { src: "/images/penzion-site.webp", width: 800, height: 1294 } as Img,
+    screenshot: { src: "/images/penzion-site.webp", width: 1236, height: 2000 } as Img,
   },
 ] as const;
 
