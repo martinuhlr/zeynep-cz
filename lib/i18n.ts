@@ -20,9 +20,9 @@ type Img = { src: string; width: number; height: number; position?: string };
 /** The fanned-out pile of thumbnails under the hero. */
 export const heroPile: (Img & { rotate: string; y: string })[] = [
   { src: "/images/reels/most-reel.webp", width: 506, height: 900, position: "center 20%", rotate: "-9deg", y: "18px" },
-  { src: "/images/ostraticky-home.webp", width: 733, height: 2000, position: "top", rotate: "-4deg", y: "-6px" },
+  { src: "/images/ostraticky-home.jpg", width: 1440, height: 3933, position: "top", rotate: "-4deg", y: "-6px" },
   { src: "/images/social/post-black-friday.webp", width: 576, height: 720, rotate: "3deg", y: "10px" },
-  { src: "/images/penzion-site.webp", width: 800, height: 1294, position: "top", rotate: "-2deg", y: "-14px" },
+  { src: "/images/penzion-site.jpg", width: 1440, height: 2330, position: "top", rotate: "-2deg", y: "-14px" },
   { src: "/images/social/post-valentyn-brand-hearts.webp", width: 576, height: 720, rotate: "6deg", y: "6px" },
   { src: "/images/reels/frizante-rose.webp", width: 720, height: 900, rotate: "10deg", y: "22px" },
 ];
@@ -62,7 +62,7 @@ export const projects = [
     name: "Ostratický",
     href: null,
     domain: "ostraticky.cz",
-    screenshot: { src: "/images/ostraticky-home.webp", width: 733, height: 2000 } as Img,
+    screenshot: { src: "/images/ostraticky-home.jpg", width: 1440, height: 3933 } as Img,
   },
   {
     id: "kosik",
@@ -76,7 +76,7 @@ export const projects = [
     name: "Penzion u Kosíků",
     href: "https://ukosiku.cz/",
     domain: "ukosiku.cz",
-    screenshot: { src: "/images/penzion-site.webp", width: 800, height: 1294 } as Img,
+    screenshot: { src: "/images/penzion-site.jpg", width: 1440, height: 2330 } as Img,
   },
 ] as const;
 
@@ -212,7 +212,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             ["Zařízení", "Desktop + mobil"],
           ],
           screenshotAlt:
-            "Návrh homepage Ostratický: rozdělený úvod pro vinohradnickou a komunální techniku, klíčová čísla, nejprodávanější stroje, kategorie, novinky a poptávkový formulář",
+            "Návrh domovské stránky Ostratický: dělený úvod pro vinařskou a komunální techniku, klíčová čísla, nejprodávanější stroje, kategorie, novinky a poptávkový formulář",
         },
         kosik: {
           type: "Sociální sítě · Tvorba obsahu",
@@ -236,7 +236,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             ["Zařízení", "Desktop + mobil"],
           ],
           screenshotAlt:
-            "Homepage Penzionu u Kosíků: úvod s tlačítkem pro rezervaci, uvítací sekce a sekce o dovolené s fotografiemi",
+            "Domovská stránka Penzionu u Kosíků: úvod s tlačítkem rezervace, uvítací sekce a sekce o dovolené s fotografiemi",
         },
       },
       kosikReelLeftAlt: "Obálka reelu: majitel drží vnučku vedle láhve Kosík Mošt",

@@ -195,14 +195,10 @@
 @keyframes pulse { 50% { box-shadow: 0 0 0 8px rgba(255,217,138,0); } }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes rise { from { transform: translateY(24px); opacity: .001; } }
-@keyframes autoscroll {
-  0%, 12% { transform: translateY(0); }
-  88%, 100% { transform: translateY(calc(-100% + var(--screen-h))); }
-}
-
-/* Touch screens can't hover: the screenshot scrolls by itself instead. */
+/* Touch screens can't hover: let people scroll inside the frame with a finger instead. */
 @media (hover: none), (pointer: coarse) {
-  .screen img { transition: none; animation: autoscroll 14s cubic-bezier(.45,.05,.35,1) infinite alternate; }
+  .screen { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .screen img, .browser:hover .screen img { transition: none; transform: none; }
   .screen-hint { display: none; }
 }
 
